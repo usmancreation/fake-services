@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Text Button Template</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial , sans-serif;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 50%, #a1c4fd 100%);
+            animation: bgFade 3s ease-in;
+        }
+        @keyframes bgFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        header {
+            width: 100%;
+            text-align: center;
+            padding: 32px 0 16px 0;
+            background: rgba(255,255,255,0.7);
+            box-shadow: 0 2px 16px 0 rgba(102,166,255,0.08);
+            border-radius: 0 0 32px 32px;
+            margin-bottom: 24px;
+            animation: headerFade 1.2s;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.7rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #f7971e, #ffd200, #21d4fd, #b721ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 12px rgba(102,166,255,0.13);
+        }
+        @keyframes headerFade {
+            from { opacity: 0; transform: translateY(-40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.95);
+            border-radius: 30px;
+            box-shadow: 0 8px 32px 0 rgb(255, 255, 255), 0 0 0 8px rgb(248, 248, 248);
+            padding: 20px 10px;
+            animation: containerPop 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+            position: relative;
+            overflow: hidden;
+            margin: 20px;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -60px; left: -60px;
+            width: 180px; height: 180px;
+            background: radial-gradient(circle, #fcb69f 0%, #ffecd2 100%);
+            opacity: 0.25;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        @keyframes containerPop {
+            0% { transform: scale(0.8) rotate(-5deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+        .image {
+            width: 160px;
+            height: 160px;
+            background: conic-gradient(from 0deg, #f7971e, #ffd200, #21d4fd, #b721ff, #f7971e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #fff;
+            box-shadow: 0 4px 24px rgba(102,166,255,0.2), 0 0 0 8px #fff6;
+            margin-right: 36px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: rainbowSpin 2.5s linear infinite, imageBounce 1.2s;
+            position: relative;
+            z-index: 1;
+        }
+        .image:hover {
+            transform: scale(1.12) rotate(-6deg);
+            box-shadow: 0 12px 36px 0 rgba(183,33,255,0.25), 0 0 0 12px #fff9;
+        }
+        @keyframes imageBounce {
+            0% { transform: scale(0.7);}
+            60% { transform: scale(1.1);}
+            100% { transform: scale(1);}
+        }
+        @keyframes rainbowSpin {
+            0% { filter: hue-rotate(0deg);}
+            100% { filter: hue-rotate(360deg);}
+        }
+        .text {
+            margin-left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: textFadeIn 1.2s;
+            position: relative;
+            z-index: 1;
+        }
+        .text > div {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #f7971e, #ffd200, #21d4fd, #b721ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 14px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 12px rgba(102,166,255,0.13);
+            animation: textSlide 1s;
+        }
+        @keyframes textFadeIn {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes textSlide {
+            from { opacity: 0; transform: translateX(30px);}
+            to { opacity: 1; transform: translateX(0);}
+        }
+        .button {
+            padding: 14px 32px;
+            background: linear-gradient(90deg, #ff512f 0%, #dd2476 50%, #1fa2ff 100%);
+            color: rgb(246, 246, 246);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 2px 30px rgb(61, 58, 58);
+            transition: background 0.3s, transform 0.2s, box-shadow 0.9s;
+            outline: none;
+            animation: buttonPop 1.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .button::after {
+            content: "";
+            position: absolute;
+            left: -40%;
+            top: 0;
+            width: 30%;
+            height: 100%;
+            background: linear-gradient(120deg, rgb(255, 10, 10) 0%, rgb(254, 225, 1) 100%);
+            transform: skewX(-20deg);
+            transition: left 0.9s;
+        }
+        .button:hover::after {
+            left: 110%;
+        }
+        .button:hover {
+            background: linear-gradient(90deg, #3700ff 0%, #0370fe 50%, #08f7ff 100%);
+            transform: translateY(-4px) scale(1.07) rotate(-2deg);
+            box-shadow: 0 8px 32px rgba(31,162,255,0.25);
+        }
+        @keyframes buttonPop {
+            0% { transform: scale(0.7);}
+            60% { transform: scale(1.1);}
+            100% { transform: scale(1);}
+        }
+        .container-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Temp Mail Gallery</h1>
+    </header>
+    <div class ="column">
+        <div class="container-wrapper">
+            <div class="container">
+                <img alt="Image" class="image" src="usman anla" />
+                <div class="text">
+                    <div>TEMP MAIL</div>
+                    <button class="button">CLICK NOW</button>
+                </div>
+            </div>
+        </div>
+    <div class="container-wrapper">
+        <div class="container">
+            <img alt="Image" class="image" src="usman anla" />
+            <div class="text">
+                <div>TEMP MAIL</div>
+                <button class="button">CLICK NOW</button>
+            </div>
+        </div>
+        <div class="container">
+            <img alt="Image" class="image" src="USMAN BHATTI" />
+            <div class="text">
+                <div>TEMP MAIL</div>
+                <button class="button">CLICK NOW</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-wrapper">
+        <div class="container">
+            <img alt="Image" class="image" src="usman anla" />
+            <div class="text">
+                <div>TEMP MAIL</div>
+                <button class="button">CLICK NOW</button>
+            </div>
+        </div>
+    <div class="container-wrapper">
+        <div class="container">
+            <img alt="Image" class="image" src="usman anla" />
+            <div class="text">
+                <div>TEMP MAIL</div>
+                <button class="button">CLICK NOW</button>
+            </div>
+        </div>
+        <div class="container-wrapper">
+        <div class="container">
+            <img alt="Image" class="image" src="usman anla" />
+            <div class="text">
+                <div>TEMP MAIL</div>
+                <button class="button">CLICK NOW</button>
+            </div>
+        </div>
+        <div class="container-wrapper">
+        <div class="container">
+            <img alt="Image" class="image" src="usman anla" />
+            <div class="text">
+                <div>TEMP MAIL</div>
+                <button class="button">CLICK NOW</button>
+            </div>
+        </div>
+        <div class="container-wrapper">
+        <div class="container">
+            <img alt="Image" class="image" src="usman anla" />
+            <div class="text">
+                <div>TEMP MAIL</div>
+                <button class="button">CLICK NOW</button>
+            </div>
+        </div>
+</body>
+</html>

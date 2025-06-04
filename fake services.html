@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cyber tech</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .header {
+            width: 100%;
+            max-width: 900px;
+            margin: 30px auto 30px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgb(38, 0, 255);
+            padding: 32px 32px;
+            gap: 16px;
+            animation: headerGlow 2s infinite alternate, fadeInUp 1s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        @keyframes headerGlow {
+            0% {
+            box-shadow: 0 4px 16px 0 rgba(38,0,255,0.5), 0 0 20px 0 #6a11cb;
+            }
+            100% {
+            box-shadow: 0 4px 32px 0 rgba(38,0,255,0.8), 0 0 40px 10px #2575fc;
+            }
+        }
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, #ff00cc, #3333ff, #00ffcc, #ffcc00, #ff00cc);
+            opacity: 0.15;
+            z-index: 0;
+            animation: headerBgRotate 8s linear infinite;
+        }
+        @keyframes headerBgRotate {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        .header-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+            box-shadow: 0 0 12px 2px #6a11cb, 0 0 24px 4px #2575fc;
+            animation: logoPulse 2s infinite alternate;
+        }
+        @keyframes logoPulse {
+            0% { box-shadow: 0 0 12px 2px #6a11cb, 0 0 24px 4px #2575fc;}
+            100% { box-shadow: 0 0 24px 8px #ff00cc, 0 0 32px 12px #00ffcc;}
+        }
+        .header-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px #2575fc, 0 0 16px #ff00cc;
+            animation: titleRainbow 3s linear infinite;
+        }
+        @keyframes titleRainbow {
+            0% { color: #fff; text-shadow: 0 2px 8px #2575fc, 0 0 16px #ff00cc;}
+            25% { color: #ffcc00; text-shadow: 0 2px 8px #ff00cc, 0 0 16px #00ffcc;}
+            50% { color: #00ffcc; text-shadow: 0 2px 8px #ffcc00, 0 0 16px #3333ff;}
+            75% { color: #ff00cc; text-shadow: 0 2px 8px #00ffcc, 0 0 16px #ffcc00;}
+            100% { color: #fff; text-shadow: 0 2px 8px #2575fc, 0 0 16px #ff00cc;}
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(90deg, #25d366 0%, #128c7e 100%);
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            padding: 10px 22px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgb(255, 2, 2), 0 0 12px 2px #25d366;
+            transition: background 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .whatsapp-btn:hover {
+            background: linear-gradient(90deg, #128c7e 0%, #25d366 100%);
+            box-shadow: 0 4px 16px #25d366, 0 0 24px 4px #128c7e;
+        }
+        .whatsapp-icon {
+            width: 22px;
+            height: 22px;
+            display: inline-block;
+            filter: drop-shadow(0 0 6px #25d366);
+            animation: iconBounce 1.5s infinite alternate;
+        }
+        @keyframes iconBounce {
+            0% { transform: translateY(0);}
+            100% { transform: translateY(-5px);}
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(120deg, #fff 60%, #a1c4fd 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px 0 rgba(38, 0, 255, 0.25), 0 0 24px 4px #ff00cc33;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-in-out, containerGlow 3s infinite alternate;
+            position: relative;
+            transition: box-shadow 0.3s;
+        }
+        @keyframes containerGlow {
+            0% {
+            box-shadow: 0 10px 25px 0 rgba(38, 0, 255, 0.25), 0 0 24px 4px #ff00cc33;
+            }
+            100% {
+            box-shadow: 0 10px 40px 0 rgba(38, 0, 255, 0.45), 0 0 48px 12px #00ffcc44;
+            }
+        }
+        .image-box {
+            flex-shrink: 0;
+            width: 150px;
+            height: 150px;
+            background: url('https://www.shutterstock.com/image-vector/water-surface-magic-neon-glow-600nw-2483884465.jpg') center center/cover no-repeat;
+            border-right: 4px solid #6a11cb;
+            animation: imagePulse 2.5s infinite alternate;
+        }
+        @keyframes imagePulse {
+            0% { filter: brightness(1) drop-shadow(0 0 0 #ff00cc);}
+            100% { filter: brightness(1.15) drop-shadow(0 0 16px #00ffcc);}
+        }
+        .text-box {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+            position: relative;
+        }
+        .text-box h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ff00cc, #00ffcc, #2575fc, #ffcc00, #ff00cc);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textSlide 1s ease forwards, rainbowText 3s linear infinite;
+        }
+        @keyframes rainbowText {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 100px;
+            font-size: 16px;
+            color: #fff;
+            background: linear-gradient(135deg, #6a11cb, #2575fc, #ff00cc, #00ffcc);
+            background-size: 300% 300%;
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 16px 2px #ff00cc66;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.5s;
+            overflow: hidden;
+            animation: buttonGlow 2s infinite alternate, buttonRainbow 3s linear infinite;
+            position: relative;
+        }
+        @keyframes buttonGlow {
+            0% { box-shadow: 0 5px 15px rgba(0,0,0,0.2), 0 0 16px 2px #ff00cc66; }
+            100% { box-shadow: 0 8px 30px rgb(255, 255, 255), 0 0 32px 8px #02fdcb; }
+        }
+        @keyframes buttonRainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .button:hover {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 40px 10px #2575fc99;
+            background-position: right center;
+            filter: brightness(1.15) drop-shadow(0 0 12px #ff00cc) drop-shadow(0 0 24px #00ffcc);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes textSlide {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 16px;
+                gap: 10px;
+            }
+            .main {
+                gap: 16px;
+            }
+            .container {
+                flex-direction: column;
+            }
+            .image-box {
+                border-right: none;
+                border-bottom: 4px solid #6a11cb;
+                width: 100%;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="https://yt3.googleusercontent.com/sHTNk6k9k32oO2tXWN1T_xRrRjqFAZIMs2_GEi1oJIkU7R_Cg6w9bVwoc1PbEYG6f_sWbMcOWA=s900-c-k-c0x00ffffff-no-rj" alt="Logo" class="header-logo">
+            <span class="header-title">CYBER TECH</span>
+        </div>
+        <div class="header-right">
+            <a class="whatsapp-btn" href="https://wa.me/923226048105" target="_blank" rel="noopener">
+                <img class="whatsapp-icon" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon">
+                WhatsApp now
+            </a>
+        </div>
+    </header>
+    <div class="main">
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://i.pinimg.com/736x/f5/e0/6d/f5e06df6ed8183507eb57fea9ec22165.jpg');"></div>
+            <div class="text-box">
+                <h1>EASYPAISA FAKE SS</h1>
+                <a href="link" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://i.pinimg.com/736x/f5/e0/6d/f5e06df6ed8183507eb57fea9ec22165.jpg');"></div>
+            <div class="text-box">
+                <h1>EASYPAISA ANIMATION</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://i.pinimg.com/736x/f5/e0/6d/f5e06df6ed8183507eb57fea9ec22165.jpg');"></div>
+            <div class="text-box">
+                <h1>EASYPAISA FAKE HISTORY</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://www.phclondon.org/img/web/cnic.jpg');"></div>
+            <div class="text-box">
+                <h1>PAK FAKE ID</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlUurW1SzCFtxkbZgDt1q-qrmz2qlNeOiwFg&s');"></div>
+            <div class="text-box">
+                <h1>FAKE TEXT MASSEGE</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://pbs.twimg.com/profile_images/1609275529458245632/hxNQKq2e_400x400.jpg');"></div>
+            <div class="text-box">
+                <h1>NAYAPAY TO EASYPAISA</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://elfsight.com/wp-content/uploads/2019/03/whatsapp-chat.png');"></div>
+            <div class="text-box">
+                <h1>FAKE WHATSAPP CHAT</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2geEtoV-Ufxqsg2vlY9YkhTkmIjRLcsggwA&s');"></div>
+            <div class="text-box">
+                <h1>FAKE INSTRAGRAM CHAT</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1hQe8sRGWymZBmaO7wxOM9Pl3U7dnOLE9-w&s');"></div>
+            <div class="text-box">
+                <h1>ALL SOCIAL MEDIA CHAT</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://i.ytimg.com/vi/6KzgtWtjIRI/hqdefault.jpg');"></div>
+            <div class="text-box">
+                <h1>UK AND USA FAKE NMBR</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://static.vecteezy.com/system/resources/previews/013/948/544/non_2x/gmail-logo-on-transparent-white-background-free-vector.jpg');"></div>
+            <div class="text-box">
+                <h1>FAKE GMAIL ACCOUNT</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://play-lh.googleusercontent.com/g6xPzereRM0abW1FZi6mt6OE--Zq2MFlBfW-gcfvwisjcVpplwvFnfdEZ2RstPrzgA');"></div>
+            <div class="text-box">
+                <h1>FAKE TEMP MAIL</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://m.media-amazon.com/images/I/51RUhVV8DOL._UF894,1000_QL80_.jpg');"></div>
+            <div class="text-box">
+                <h1>FAKE YOUTUBE ID</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://e7.pngegg.com/pngimages/528/359/png-clipart-google-play-gift-card-voucher-discounts-and-allowances-google-text-triangle.png');"></div>
+            <div class="text-box">
+                <h1>FAKE GOOGLE ID</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR--Ala04CAgh-drl4ZKC1CH5kMCE_UA53OhWkbZslBRtYxAiZ9TBQo0DbgRVqXpDa-RMQ&usqp=CAU');"></div>
+            <div class="text-box">
+                <h1>FAKE FACEBOOK ID</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://cdn.britannica.com/54/237654-050-9DD5E536/Macro-image-of-all-major-credit-card-companies.jpg');"></div>
+            <div class="text-box">
+                <h1>FAKE CREDIT CARD</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMKoSo1O4uLfcQFNpQpeUdS8SY73iHHv-XEg&s');"></div>
+            <div class="text-box">
+                <h1>FAKE TRADING SIGNAL</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://crystalpng.com/wp-content/uploads/2024/12/new-Jazzcash-logo.png');"></div>
+            <div class="text-box">
+                <h1>JAZZCAH FAKE SS</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-box" style="background-image: url('https://play-lh.googleusercontent.com/IWU8HM1uQuW8wVrp6XpyOOJXvb_1tDPUDAOfkrl83RZPG9Ww3dCY9X1AV6T1atSvgXc');"></div>
+            <div class="text-box">
+                <h1>PAYTM FAKE SS</h1>
+                <a href="LINK" target="_blank">
+                <button class="button">CLICK NOW</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
